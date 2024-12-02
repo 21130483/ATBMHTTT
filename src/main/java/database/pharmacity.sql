@@ -416,11 +416,6 @@ VALUES (1, 3, 3, 999, '2023-02-17', 20000, 1000, 10, 'Máy đo huyết áp tự 
 --	(999, 4, 1, 999, '2023-02-17', 27000, 1000, 90, 'Băng  ', 'CÔNG TY ', 'm phân phối dành cho thị trườ');	
 
 
-
-       (998, 4, 1, 999, '2023-02-17', 27000, 1000, 90, 'Băng  ', 'CÔNG TY ', 'm phân phối dành cho thị trườ'),
-       (999, 4, 1, 999, '2023-02-17', 27000, 1000, 90, 'Băng  ', 'CÔNG TY ', 'm phân phối dành cho thị trườ');
-
-
 --	(999, `categoryID`, `originID`, `quantity`, `dateAdded`, `price`, `sale`, `orderedNumbers`, `name, `trademark`, `content`);
 
 
