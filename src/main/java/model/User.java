@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 public class User {
     private int userID;
     private String email;
-    private int phoneNumbers;
+    private String phoneNumbers;
     private String fullName;
     private String password;
     private Date dob;
@@ -19,7 +19,7 @@ public class User {
     public User() {
     }
 
-    public User(int userID, String email, int phoneNumbers, String fullName, String password, Date dob, String gender) {
+    public User(int userID, String email, String phoneNumbers, String fullName, String password, Date dob, String gender) {
         this.userID = userID;
         this.email = email;
         this.phoneNumbers = phoneNumbers;
@@ -45,11 +45,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhoneNumbers() {
+    public String getPhoneNumbers() {
         return phoneNumbers;
     }
 
-    public void setPhoneNumbers(int phoneNumbers) {
+    public void setPhoneNumbers(String phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
     }
 

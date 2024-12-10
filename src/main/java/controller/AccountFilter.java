@@ -49,7 +49,7 @@ public class AccountFilter extends HttpServlet {
             List<Address> addresses = addressDAO.getAddressByUserId(user.getUserID());
             req.setAttribute("listOrderItem", listOrderItem);
             req.setAttribute("addresses", addresses);
-            req.getRequestDispatcher("account.jsp").forward(req, resp);
+            req.getRequestDispatcher("account2.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("login.jsp");
         }
@@ -65,7 +65,7 @@ public class AccountFilter extends HttpServlet {
             List<Address> addresses = addressDAO.getAddressByUserId(user.getUserID());
             req.setAttribute("listOrderItem", listOrderItem);
             req.setAttribute("addresses", addresses);
-            req.getRequestDispatcher("account.jsp").forward(req, resp);
+            req.getRequestDispatcher("account2.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("login.jsp");
         }

@@ -1,11 +1,14 @@
 package model;
 
+import dao.ProductDAO;
+import dao.PurchasesDAO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 public class Purchases {
     private int purchaseID;
@@ -146,6 +149,65 @@ public class Purchases {
         this.quantity = quantity;
 
     }
+    public String getDateOrderString (){
+
+        return "Ngày "+orderDate.getDay()+" tháng "+orderDate.getMonth()+" năm "+(orderDate.getYear()+1900);
+    }
+
+    public String getDateOrderStringShort(){
+
+        return ""+orderDate.getDay()+"/"+orderDate.getMonth()+"/"+(orderDate.getYear()+1900);
+    }
+
+    public String getTotalPriceHaveDots() {
+        PurchasesDAO purchasesDAO =  new PurchasesDAO();
+        ProductDAO productDAO = new ProductDAO();
+        List<Purchases> purchasesList = purchasesDAO.getPurchaseByPurchaseID(purchaseID);
+        int total =0;
+        for (Purchases purchases : purchasesList){
+            Product product = productDAO.getProductById(purchases.getProductID());
+            total += product.getPrice()*purchases.getQuantity();
+        }
+        String result = "";
+        String priceString = String.valueOf(total);
+        int dots = priceString.length() - 1 / 3;
+        int remainder = priceString.length() % 3;
+        for (int i = 0; i < priceString.length(); i++) {
+            if (i % 3 == remainder && i != 0) {
+
+                result += ".";
+            }
+            result += priceString.charAt(i);
+
+        }
+        result += " Đồng";
+        return result;
+    }
+
+    public String getTotalPriceHaveDotsHaveDelivery() {
+        PurchasesDAO purchasesDAO =  new PurchasesDAO();
+        ProductDAO productDAO = new ProductDAO();
+        List<Purchases> purchasesList = purchasesDAO.getPurchaseByPurchaseID(purchaseID);
+        int total =25000;
+        for (Purchases purchases : purchasesList){
+            Product product = productDAO.getProductById(purchases.getProductID());
+            total += product.getPrice()*purchases.getQuantity();
+        }
+        String result = "";
+        String priceString = String.valueOf(total);
+        int dots = priceString.length() - 1 / 3;
+        int remainder = priceString.length() % 3;
+        for (int i = 0; i < priceString.length(); i++) {
+            if (i % 3 == remainder && i != 0) {
+
+                result += ".";
+            }
+            result += priceString.charAt(i);
+
+        }
+        result += " Đồng";
+        return result;
+    }
 
     @Override
     public String toString() {
@@ -163,5 +225,8 @@ public class Purchases {
                 ", content='" + content + '\'' +
                 ", dateRated=" + dateRated +
                 '}';
+    }
+
+    public static void main(String[] args) {
     }
 }

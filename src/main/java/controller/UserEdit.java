@@ -28,17 +28,17 @@ public class UserEdit extends HttpServlet {
         User user = userDAO.getUserById(Integer.parseInt(userId));
                 String fullName = req.getParameter("full_name");
                 String gender = req.getParameter("gender");
-                String dobString = req.getParameter("date");
+                String dobString = req.getParameter("dob");
                 String phone = req.getParameter("phone_number");
                 String email = req.getParameter("email");
                 user.setFullName(fullName);
                 user.setGender(gender);
                 user.setDob(Date.valueOf(dobString));
-                user.setPhoneNumbers(Integer.parseInt(phone));
+                user.setPhoneNumbers(phone);
                 user.setEmail(email);
                 userDAO.updateUser1(user);
         req.setAttribute("listOrderItem", purchasesDAO.getAllPurchases(user.getUserID()));
         req.getSession().setAttribute("user", user);
-        req.getRequestDispatcher("account.jsp").forward(req, resp);
+        req.getRequestDispatcher("account").forward(req, resp);
     }
 }

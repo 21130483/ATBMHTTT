@@ -18,6 +18,8 @@ public class ProductDAO {
     }
 
 
+
+
     public static Product getProductById(int id) {
         Product result = handle.select("SELECT * FROM products WHERE productID = ?").bind(0, id).mapToBean(Product.class).findOne().orElse(null);
         return result;

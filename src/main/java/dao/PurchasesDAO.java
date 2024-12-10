@@ -21,6 +21,42 @@ public class PurchasesDAO {
         Purchases result = handle.select("SELECT * FROM purchases WHERE purchaseID = ? LIMIT 1").bind(0, id).mapToBean(Purchases.class).findOne().orElse(null);
         return result;
     }
+    public static int countByPurchaseID(int id) {
+        int result =handle.createQuery("SELECT COUNT(*) FROM purchases WHERE purchaseID = ?").bind(0, id).mapTo(Integer.class).one();
+        return result;
+    }
+    public static List<Integer> getProductIdsByPurchaseId(int purchaseId) {
+        return handle.createQuery("SELECT productID FROM purchases WHERE purchaseID = :purchaseID")
+                .bind("purchaseID", purchaseId)
+                .mapTo(Integer.class)
+                .list();
+    }
+
+    public static int getQuantityByPurchaseIdAndProductID(int purchaseId, int productId) {
+        int result =handle.createQuery("SELECT quantity FROM purchases WHERE purchaseID = ? AND productID = ?").bind(0, purchaseId).bind(1,productId).mapTo(Integer.class).one();
+        return result;
+    }
+
+
+
+
+    public static List<Purchases> getPurchaseByUserId(int userid) {
+        List<Purchases> result = new ArrayList<>();
+        result = handle.select("SELECT * FROM purchases WHERE userID = ? GROUP BY purchaseID;").bind(0, userid).mapToBean(Purchases.class).collect(Collectors.toList());
+        return result;
+    }
+
+    public static List<Purchases> getPurchaseByUserIdAndStatus(int userid,int status) {
+        List<Purchases> result = new ArrayList<>();
+        result = handle.select("SELECT * FROM purchases WHERE userID = ? AND status = ? GROUP BY purchaseID;").bind(0, userid).bind(1,status).mapToBean(Purchases.class).collect(Collectors.toList());
+        return result;
+    }
+
+    public static List<Purchases> getPurchaseByPurchaseID(int purchaseID) {
+        List<Purchases> result = new ArrayList<>();
+        result = handle.select("SELECT * FROM purchases WHERE purchaseID = ?").bind(0, purchaseID).mapToBean(Purchases.class).collect(Collectors.toList());
+        return result;
+    }
 
     public static int newPurchaseID(){
         int countID = 0;
@@ -57,7 +93,7 @@ public class PurchasesDAO {
 
     public static void main(String[] args) {
 
-        System.out.println(getPurchaseById(1));
+        System.out.println(getQuantityByPurchaseIdAndProductID(3,17));
     }
 
 }
