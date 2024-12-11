@@ -40,15 +40,8 @@ public class AccountFilter extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        List<Purchases> listOrderItem = purchasesDAO.getAllPurchases(user.getUserID());
-        ProductDAO productDAO = new ProductDAO();
-        List<Product> products = productDAO.getAllProduct();
-        req.setAttribute("getAllProduct", products);
         if (user != null) {
             AddressDAO addressDAO = new AddressDAO();
-            List<Address> addresses = addressDAO.getAddressByUserId(user.getUserID());
-            req.setAttribute("listOrderItem", listOrderItem);
-            req.setAttribute("addresses", addresses);
             req.getRequestDispatcher("account2.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("login.jsp");
@@ -59,12 +52,8 @@ public class AccountFilter extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        List<Purchases> listOrderItem = purchasesDAO.getAllPurchases(user.getUserID());
         if (user != null) {
             AddressDAO addressDAO = new AddressDAO();
-            List<Address> addresses = addressDAO.getAddressByUserId(user.getUserID());
-            req.setAttribute("listOrderItem", listOrderItem);
-            req.setAttribute("addresses", addresses);
             req.getRequestDispatcher("account2.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("login.jsp");

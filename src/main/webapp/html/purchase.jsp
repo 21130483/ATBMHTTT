@@ -192,9 +192,14 @@
                         %>
                         <a href="billdetail?purchaseId=<%=purchases.getPurchaseID()%>" style="text-decoration: none;">
                             <div class="box_bill">
-                                <div class="date_bill">
-                                    <%=purchases.getDateOrderStringShort()%>
-                                </div>
+                                <div class="status_date">
+                                    <div class="status_bill">
+                                        <%=purchases.getStatusString()%>
+                                    </div>
+                                    <div class="date_bill">
+                                        <%=purchases.getDateOrderStringShort()%>
+                                    </div>
+
                                 <div class="product_bill">
                                     <div class="img_name">
                                         <img src="<%=product.getPathFirstImage(request.getServletContext().getRealPath(""))%>" alt="">

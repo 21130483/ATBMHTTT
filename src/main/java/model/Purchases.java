@@ -27,7 +27,8 @@ public class Purchases {
     private Date orderDate;
     private Date receivedDate;
     private int starNumber;
-    private String content;
+    private String comment;
+    private String address;
     private Date dateRated;
 
     public Purchases() {
@@ -86,18 +87,18 @@ public class Purchases {
         return status;
     }
 
-    public String getStatusString() {
-        if (status == 0) {
-            return "chờ xác nhận";
-        } else if (status == 1) {
-            return "đang giao";
-        } else if (status == 2) {
-            return "thành công";
-
-        }else{
-            return "Hủy đơn hàng";
-        }
-    }
+//    public String getStatusString() {
+//        if (status == 0) {
+//            return "chờ xác nhận";
+//        } else if (status == 1) {
+//            return "đang giao";
+//        } else if (status == 2) {
+//            return "thành công";
+//
+//        }else{
+//            return "Hủy đơn hàng";
+//        }
+//    }
 
     public void setStatus(int status) {
         this.status = status;
@@ -127,12 +128,21 @@ public class Purchases {
         this.starNumber = starNumber;
     }
 
-    public String getContent() {
-        return content;
+    public String getComment() {
+        return comment;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getDateRated() {
@@ -208,6 +218,23 @@ public class Purchases {
         result += " Đồng";
         return result;
     }
+    public String getStatusString(){
+        switch (status) {
+            case 0:
+                return "Chờ xác nhận";
+            case 1:
+                return "Đang giao";
+            case 2:
+                return "Giao thành công";
+            default:
+                return "Hủy đơn hàng";
+        }
+
+        //-1 là hủy đơn hàng
+        //0 là chờ xác nhận
+        //1 là đang giao
+        //2 là giao thành côn
+    }
 
     @Override
     public String toString() {
@@ -215,14 +242,15 @@ public class Purchases {
                 "purchaseID=" + purchaseID +
                 ", userID=" + userID +
                 ", productID=" + productID +
-                ", name=" + name +
+                ", name='" + name + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", status=" + status +
                 ", orderDate=" + orderDate +
                 ", receivedDate=" + receivedDate +
                 ", starNumber=" + starNumber +
-                ", content='" + content + '\'' +
+                ", comment='" + comment + '\'' +
+                ", address='" + address + '\'' +
                 ", dateRated=" + dateRated +
                 '}';
     }

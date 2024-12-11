@@ -19,10 +19,7 @@ public class AddressDAO {
         return result;
     }
 
-    public static List<Address> getAddressByUserId(int userId) {
-        List<Address> addresses = handle.select("select * from address WHERE userID = ?").bind(0, userId).mapToBean(Address.class).collect(Collectors.toList());
-        return addresses;
-    }
+
 
     public static boolean addAddress(int userId, String city, String district, String ward, String detail) {
         boolean check = handle.execute("INSERT INTO address (userID, city, district, ward, detail) value(?,?,?,?,?)", userId, city, district, ward, detail) > 0;

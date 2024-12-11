@@ -67,9 +67,9 @@ public class PurchasesDAO {
         } while (purchases != null);
         return countID;
     }
-    public static boolean addPurchase(int purchaseId,int prodcutID, int userID, int quantity,int price) {
+    public static boolean addPurchase(int purchaseId,int prodcutID, int userID, int quantity,int price,String address,String comment) {
         String orderDate = String.valueOf(LocalDate.now());
-        boolean check = handle.execute("INSERT INTO purchases (purchaseID,userID, productID, quantity, price, orderDate, status) value(?,?,?,?,?,?,?)",purchaseId, userID, prodcutID, quantity,price, orderDate, 0) > 0;
+        boolean check = handle.execute("INSERT INTO purchases (purchaseID,userID, productID, quantity, price, orderDate, status, comment, address) value(?,?,?,?,?,?,?,?,?)",purchaseId, userID, prodcutID, quantity,price, orderDate, 0,comment,address) > 0;
         return check;
     }
 

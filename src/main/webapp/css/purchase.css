@@ -1,20 +1,14 @@
 .container{
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     width: 1216px;
-    align-items: self-start;
-}
-
-.noi-dung{
-    height: auto;
-    background-color: #E5E5E5;
-    padding: 32px 0;
 }
 
 .account-info{
     width: 300px;
-    height: auto;
+    height: 800px;
 }
 
 .avatar_box{
@@ -58,12 +52,6 @@
     background-color: white;
 }
 
-.account-info ul a{
-    text-decoration: none;
-    color: black;
-}
-
-
 .account-info .menu_account:hover{
     background-color: #E5E5E5;
 }
@@ -87,7 +75,7 @@
 .account-noidung{
     background-color: white;
     width: 900px;
-    height: auto;
+    height: 800px;
     margin-left: 50px;
     display: flex;
     padding: 30px;
@@ -147,9 +135,19 @@
     margin-top: 10px;
 }
 
+.box_bill .status_date{
+    display: flex;
+    justify-content: space-between;
+}
+
+.box_bill .status_bill{
+    display: flex;
+    color: rgb(139, 224, 11);
+    font-size: 20px;
+}
+
 .box_bill .date_bill{
     display: flex;
-    flex-direction: row-reverse;
     color: #657384;
     font-size: 20px;
 }
@@ -192,5 +190,5 @@
     display: flex;
     flex-direction: row-reverse;
     font-size: 20px;
-    color: red;
+    color: black;
 }

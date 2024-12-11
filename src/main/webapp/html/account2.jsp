@@ -32,7 +32,6 @@
 <%@ page import="model.Product" %>
 <%
     User user = (User) session.getAttribute("user");
-
 %>
 
 
