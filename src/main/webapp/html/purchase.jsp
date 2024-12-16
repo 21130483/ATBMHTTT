@@ -199,6 +199,8 @@
                                     <div class="date_bill">
                                         <%=purchases.getDateOrderStringShort()%>
                                     </div>
+                                </div>
+
 
                                 <div class="product_bill">
                                     <div class="img_name">

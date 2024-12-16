@@ -135,6 +135,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .address .addressDetail .choose_add select{
